@@ -1,4 +1,23 @@
+import { useEffect } from "react";
+
 export default function Testimonials() {
+  useEffect(() => {
+    new Swiper(".testimonials-slider", {
+      speed: 600,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      slidesPerView: "auto",
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true,
+      },
+    });
+  }, []);
+
   return (
     <section id="testimonials" className="testimonials section-bg">
       <div className="container" data-aos="fade-up">

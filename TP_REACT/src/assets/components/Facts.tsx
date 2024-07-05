@@ -1,5 +1,9 @@
-export default function Facts() {
+import { useEffect } from "react";
 
+export default function Facts() {
+  useEffect(() => {
+    new PureCounter();
+  }, []);
 
   return (
     <section id="facts" className="facts">
