@@ -1,4 +1,6 @@
 export default function Facts() {
+
+
   return (
     <section id="facts" className="facts">
       <div className="container" data-aos="fade-up">

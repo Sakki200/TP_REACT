@@ -1,4 +1,4 @@
-(function () {
+
   "use strict";
 
   /**
@@ -137,7 +137,6 @@
     });
   }
 
-
   /**
    * Porfolio isotope and filter
    */
@@ -239,4 +238,4 @@
    * Initiate Pure Counter
    */
   new PureCounter();
-})();
+ 

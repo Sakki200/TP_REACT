@@ -1,4 +1,5 @@
 export default function Footer() {
+  
   return (
     <footer id="footer">
       <div className="container">
@@ -35,6 +36,8 @@ export default function Footer() {
           <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
+      
     </footer>
+      
   );
 }

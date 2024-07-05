@@ -1,17 +1,23 @@
 import { useEffect } from "react";
+import "../js/main.js";
 
 export default function Skills() {
-  const select = (el: any, all = false) => {
-    el = el.trim();
-    if (all) {
-      return [...document.querySelectorAll(el)];
-    } else {
-      return document.querySelector(el);
-    }
-  };
-  let skilsContent = select(".skills-content");
-  if (skilsContent) {
-    useEffect(() => {
+  useEffect(() => {
+    const select = (el: any, all = false) => {
+      el = el.trim();
+      if (all) {
+        return [...document.querySelectorAll(el)];
+      } else {
+        return document.querySelector(el);
+      }
+    };
+
+    const onscroll = (el: any, listener: any) => {
+      el.addEventListener("scroll", listener);
+    };
+
+    let skilsContent = select(".skills-content");
+    if (skilsContent) {
       new Waypoint({
         element: skilsContent,
         offset: "80%",
@@ -22,8 +28,28 @@ export default function Skills() {
           });
         },
       });
-    }, []);
-  }
+    }
+
+    let navbarlinks = select("#navbar .scrollto", true);
+    const navbarlinksActive = () => {
+      let position = window.scrollY + 200;
+      navbarlinks.forEach((navbarlink: any) => {
+        if (!navbarlink.hash) return;
+        let section = select(navbarlink.hash);
+        if (!section) return;
+        if (
+          position >= section.offsetTop &&
+          position <= section.offsetTop + section.offsetHeight
+        ) {
+          navbarlink.classList.add("active");
+        } else {
+          navbarlink.classList.remove("active");
+        }
+      });
+    };
+    window.addEventListener("load", navbarlinksActive);
+    onscroll(document, navbarlinksActive);
+  }, []);
 
   return (
     <section id="skills" className="skills section-bg">
