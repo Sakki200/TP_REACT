@@ -13,7 +13,7 @@ import Portfolio from "./assets/components/Portfolio.tsx";
 import Services from "./assets/components/Services.tsx";
 import Testimonials from "./assets/components/Testimonials.tsx";
 import Contact from "./assets/components/Contact.tsx";
-
+import BacktoTop from "./assets/components/BacktoTop.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -32,11 +32,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </main>
     <Footer />
     {/* <div id="preloader"></div> */}
-    <a
-      href="#"
-      className="back-to-top d-flex align-items-center justify-content-center"
-    >
-      <i className="bi bi-arrow-up-short"></i>
-    </a>
+    <BacktoTop />
   </React.StrictMode>
 );
