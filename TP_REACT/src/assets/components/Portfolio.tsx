@@ -1,4 +1,70 @@
+import { useEffect } from "react";
+
 export default function Portfolio() {
+  const url = "details";
+
+  const select = (el: any, all = false) => {
+    el = el.trim();
+    if (all) {
+      return [...document.querySelectorAll(el)];
+    } else {
+      return document.querySelector(el);
+    }
+  };
+
+  const on = (type: any, el: any, listener: any, all = false) => {
+    let selectEl = select(el, all);
+    if (selectEl) {
+      if (all) {
+        selectEl.forEach((e: any) => e.addEventListener(type, listener));
+      } else {
+        selectEl.addEventListener(type, listener);
+      }
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      let portfolioContainer = select(".portfolio-container");
+      if (portfolioContainer) {
+        let portfolioIsotope = new Isotope(portfolioContainer, {
+          itemSelector: ".portfolio-item",
+        });
+
+        let portfolioFilters = select("#portfolio-flters li", true);
+
+        on(
+          "click",
+          "#portfolio-flters li",
+          function (e: any) {
+            e.preventDefault();
+            portfolioFilters.forEach(function (el) {
+              el.classList.remove("filter-active");
+            });
+            this.classList.add("filter-active");
+
+            portfolioIsotope.arrange({
+              filter: this.getAttribute("data-filter"),
+            });
+            portfolioIsotope.on("arrangeComplete", function () {
+              AOS.refresh();
+            });
+          },
+          true
+        );
+      }
+    });
+
+    const portfolioLightbox = GLightbox({
+      selector: ".portfolio-lightbox",
+    });
+
+    const portfolioDetailsLightbox = GLightbox({
+      selector: ".portfolio-details-lightbox",
+      width: "90%",
+      height: "90vh",
+    });
+  }, []);
+
   return (
     <section id="portfolio" className="portfolio section-bg">
       <div className="container" data-aos="fade-up">
@@ -54,7 +120,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -86,7 +152,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -118,7 +184,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -150,7 +216,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -182,7 +248,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -214,7 +280,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -246,7 +312,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -278,7 +344,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
@@ -310,7 +376,7 @@ export default function Portfolio() {
                     <i className="bx bx-plus"></i>
                   </a>
                   <a
-                    href="portfolio-details.html"
+                    href="details"
                     className="portfolio-details-lightbox"
                     data-glightbox="type: external"
                     title="Portfolio Details"
