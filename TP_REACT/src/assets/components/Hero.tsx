@@ -1,10 +1,41 @@
+import { useEffect } from "react";
+import Typed from "typed.js";
+
 export default function Hero() {
+  const select = (el: any, all = false) => {
+    el = el.trim();
+    if (all) {
+      return [...document.querySelectorAll(el)];
+    } else {
+      return document.querySelector(el);
+    }
+  };
+
+  useEffect(() => {
+    const typed = select(".typed");
+    if (typed) {
+      let typed_strings = typed.getAttribute("data-typed-items");
+      typed_strings = typed_strings.split(",");
+      const instance = new Typed(".typed", {
+        strings: typed_strings,
+        loop: true,
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 2000,
+      });
+
+      return () => {
+        instance.destroy();
+      };
+    }
+  }, []);
+
   return (
     <section id="hero" className="d-flex flex-column justify-content-center">
       <div className="container" data-aos="zoom-in" data-aos-delay="100">
         <h1>Brandon Johnson</h1>
         <p>
-          I'm
+          I'm&ensp;
           <span
             className="typed"
             data-typed-items="Designer, Developer, Freelancer, Photographer"

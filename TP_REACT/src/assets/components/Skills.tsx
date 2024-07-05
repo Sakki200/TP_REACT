@@ -1,4 +1,30 @@
+import { useEffect } from "react";
+
 export default function Skills() {
+  const select = (el: any, all = false) => {
+    el = el.trim();
+    if (all) {
+      return [...document.querySelectorAll(el)];
+    } else {
+      return document.querySelector(el);
+    }
+  };
+  let skilsContent = select(".skills-content");
+  if (skilsContent) {
+    useEffect(() => {
+      new Waypoint({
+        element: skilsContent,
+        offset: "80%",
+        handler: function (direction) {
+          let progress = select(".progress .progress-bar", true);
+          progress.forEach((el: any) => {
+            el.style.width = el.getAttribute("aria-valuenow") + "%";
+          });
+        },
+      });
+    }, []);
+  }
+
   return (
     <section id="skills" className="skills section-bg">
       <div className="container" data-aos="fade-up">

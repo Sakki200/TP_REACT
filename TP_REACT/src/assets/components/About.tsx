@@ -14,7 +14,11 @@ function About() {
 
         <div className="row">
           <div className="col-lg-4">
-            <img src="assets/img/profile-img.jpg" className="img-fluid" alt="" />
+            <img
+              src="../public/img/profile-img.jpg"
+              className="img-fluid"
+              alt=""
+            />
           </div>
           <div className="col-lg-8 pt-4 pt-lg-0 content">
             <h3>UI/UX Designer &amp; Web Developer.</h3>

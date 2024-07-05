@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "bootstrap";
 import "./assets/css/style.css";
 import Header from "./assets/components/Header.tsx";
 import Hero from "./assets/components/Hero.tsx";
