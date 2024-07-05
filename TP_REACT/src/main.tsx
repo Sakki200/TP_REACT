@@ -14,6 +14,7 @@ import Services from "./assets/components/Services.tsx";
 import Testimonials from "./assets/components/Testimonials.tsx";
 import Contact from "./assets/components/Contact.tsx";
 import BacktoTop from "./assets/components/BacktoTop.tsx";
+import Preloader from "./assets/components/Preloader.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -31,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Contact />
     </main>
     <Footer />
-    {/* <div id="preloader"></div> */}
+    <Preloader />
     <BacktoTop />
   </React.StrictMode>
 );
